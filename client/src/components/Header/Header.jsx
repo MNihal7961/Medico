@@ -41,11 +41,11 @@ const Header = () => {
   })
 
   const toggleMenu=()=>menuRef.current.classList.toggle('show__menu')
-  return <header className='headr flex items-center' ref={headerRef}>
+  return <header className='header flex items-center' ref={headerRef}>
     <div className="container">
       <div className='flex items-center justify-between'>
         {/*    LOGO     */}
-        <div className='h-[60px] w-[60px]' >
+        <div>
           <img src={logo} alt="logo" className='w-full ' />
         </div>
         {/*    MENU     */}
