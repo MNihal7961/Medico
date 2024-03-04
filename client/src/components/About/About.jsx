@@ -30,7 +30,7 @@ const About = () => {
                     we can do tommorrow. Providing the best.
                 </p>
                 <Link to='/'>
-                    <button className="btn ">Learnmore</button>
+                    <button className="btn ">Learn More</button>
                 </Link>
             </div>
         </div>
