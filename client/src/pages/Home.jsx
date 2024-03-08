@@ -12,6 +12,7 @@ import findLocIcon from "../assets/images/icon02.png"
 import bookAppIcon from "../assets/images/icon03.png"
 import faqimg from "../assets/images/faq-img.png"
 import FaqList from "../components/Faq/FaqList";
+import Testimonial from "../components/Testimonial/Testimonial";
 
 const Home = () => {
   return (
@@ -256,13 +257,13 @@ const Home = () => {
       {/*    FAQ_SECTION START  */}
       <section>
         <div className="conatiner">
-          <div className="flex justify-between gap-[50px] lg:gap-0">
-            <div>
-              <img src={faqimg} alt="faq-img" className="w-1/2 hidden md:block"/>
+          <div className="flex justify-between gap-[50px] lg:gap-0 container">
+            <div className="w-1/2 hidden md:block" >
+              <img src={faqimg} alt="faq-img"/>
             </div>
             <div className="w-full md:w-1/2">
-               <h2 className="heading">Most questions asked by our beloved users.</h2>
-               <FaqList/>
+              <h2 className="heading">Most questions asked by our beloved users.</h2>
+              <FaqList />
             </div>
           </div>
         </div>
@@ -271,13 +272,14 @@ const Home = () => {
       {/*   TESTIMONIAL START   */}
       <section>
         <div className="container">
-        <div className="xl:w-[470px] mx-auto">
+          <div className="xl:w-[470px] mx-auto">
             <h2 className="heading text-center">What our users say</h2>
             <p className="text__para text-center">
               World-class healt care for everyone. Our services offer the best
               health services currently available now.
             </p>
           </div>
+          <Testimonial />
         </div>
       </section>
       {/*   TESTIMONIAL END   */}
