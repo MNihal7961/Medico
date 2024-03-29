@@ -6,10 +6,10 @@ const uploadImageToCloudinary=async file =>{
     const uploadData= new FormData()
 
     uploadData.append('file',file)
-    uploadData.append('upload_preset',upload_preset)
+    uploadData.append('upload_preset','medico-booking')
     uploadData.append('cloud_name',cloud_name)
 
-    const res= await fetch(`baseurl/${cloud_name}/image/upload`,{
+    const res= await fetch(`https://api.cloudinary.com/v1_1/dmuqknnd1/image/upload`,{
         method:'post',
         body:uploadData
     })

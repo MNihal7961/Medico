@@ -77,23 +77,24 @@ const Header = () => {
           {/*    NAVBAR-RIGHT     */}
           <div className="flex items-center gap-4">
             {token && user ? (
-              <div className="">
+              <div>
                 <Link
                   to={`${
                     role === "doctor"
-                      ? "/doctors/profile/me"
-                      : "/users/profile/me "
+                      ? "/doctor/profile/me"
+                      : "/user/profile/me "
                   }`}
                 >
                   <figure className="w-[35px] h-[35px] rounded-full cursor-pointer">
                     <img
-                      src={userImg}
+                      src={user?.photo}
                       alt="user-profile"
                       className="w-full rounded-full"
                     />
                   </figure>
+                  <h2>{user?.name}</h2>
                 </Link>
-                <h2>{user?.name}</h2>
+                
               </div>
             ) : (
               <Link to={"/login"}>
