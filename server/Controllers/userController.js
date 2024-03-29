@@ -75,3 +75,11 @@ export const getAllUsers = async (req, res) => {
         res.status(404).json({ success: false, message: "Not Found" })
     }
 }
+
+export const getUserProfile=async(req,res)=>{
+    try{
+
+    }catch(err){
+        
+    }
+}

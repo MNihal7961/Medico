@@ -103,7 +103,6 @@ export const login = async (req, res) => {
             role: user.role
         })
     } catch (error) {
-        console.error("Error during login:", error)
         return res.status(500).json({
             status: false,
             message: "Failed To Login"

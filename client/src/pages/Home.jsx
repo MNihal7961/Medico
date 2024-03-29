@@ -4,13 +4,13 @@ import { BsArrowRight } from "react-icons/bs";
 import About from "../components/About/About";
 import SeviceList from "../components/Services/SeviceList";
 import featureImg from "../assets/images/feature-img.png";
-import videoIcon from "../assets/images/video-icon.png"
-import avatarIcon from "../assets/images/avatar-icon.png"
+import videoIcon from "../assets/images/video-icon.png";
+import avatarIcon from "../assets/images/avatar-icon.png";
 import DoctorList from "../components/Doctors/DoctorList";
-import findDocIcon from "../assets/images/icon01.png"
-import findLocIcon from "../assets/images/icon02.png"
-import bookAppIcon from "../assets/images/icon03.png"
-import faqimg from "../assets/images/faq-img.png"
+import findDocIcon from "../assets/images/icon01.png";
+import findLocIcon from "../assets/images/icon02.png";
+import bookAppIcon from "../assets/images/icon03.png";
+import faqimg from "../assets/images/faq-img.png";
 import FaqList from "../components/Faq/FaqList";
 import Testimonial from "../components/Testimonial/Testimonial";
 
@@ -32,11 +32,11 @@ const Home = () => {
                   dedicated team strives to empower patients to achieve and
                   maintain optimal health, fostering longevity and
                   well-being.Caring for both body and mind, our holistic
-                  approach ensures patients receive tailored support,
-                  preventive measures, and advanced treatments, enabling them
-                  to thrive and enjoy life to the fullest.Guided by compassion
-                  and expertise, we provide a continuum of care that
-                  prioritizes patient well-being supportive community.
+                  approach ensures patients receive tailored support, preventive
+                  measures, and advanced treatments, enabling them to thrive and
+                  enjoy life to the fullest.Guided by compassion and expertise,
+                  we provide a continuum of care that prioritizes patient
+                  well-being supportive community.
                 </p>
                 <button className="btn">Book an Appointment</button>
               </div>
@@ -102,9 +102,8 @@ const Home = () => {
                   Find a Doctor
                 </h2>
                 <p className="text-[16px] leading-7 mt-4 text__para text-center font-[400]">
-                  World-class healt care for everyone. Our health system
-                  offers unmatched, expert health care from the lab to the
-                  clinic.
+                  World-class healt care for everyone. Our health system offers
+                  unmatched, expert health care from the lab to the clinic.
                 </p>
                 <Link
                   to={"/doctors"}
@@ -123,9 +122,8 @@ const Home = () => {
                   Find a Location
                 </h2>
                 <p className="text-[16px] leading-7 mt-4 text__para text-center font-[400]">
-                  World-class healt care for everyone. Our health system
-                  offers unmatched, expert health care from the lab to the
-                  clinic.
+                  World-class healt care for everyone. Our health system offers
+                  unmatched, expert health care from the lab to the clinic.
                 </p>
                 <Link
                   to={"/doctors"}
@@ -144,9 +142,8 @@ const Home = () => {
                   Book Appointment
                 </h2>
                 <p className="text-[16px] leading-7 mt-4 text__para text-center font-[400]">
-                  World-class healt care for everyone. Our health system
-                  offers unmatched, expert health care from the lab to the
-                  clinic.
+                  World-class healt care for everyone. Our health system offers
+                  unmatched, expert health care from the lab to the clinic.
                 </p>
                 <Link
                   to={"/doctors"}
@@ -194,8 +191,8 @@ const Home = () => {
                   2. Search for your physician here, and contact their office.
                 </li>
                 <li className="text__para">
-                  3. View our physicians who are accepting new patients, use
-                  the online scheduling tool to select an appointment time.
+                  3. View our physicians who are accepting new patients, use the
+                  online scheduling tool to select an appointment time.
                 </li>
               </ul>
               <Link to="/">
@@ -205,7 +202,6 @@ const Home = () => {
             <div className="relative z-10 xl:w-[770px] flex justify-end mt-[50px] lg:mt-0">
               <img src={featureImg} alt="featureImg" className="w-3/4 " />
               <div className="w-[150px] lg:w-[248px] bg-white absolute bottom-[50px] left-0 md:bottom-[100px] md:left-5 z-20 p-2 pb-3 lg:pt-4 lg:px-4 lg:pb-[26px] rounded-[10px] ">
-
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-[6px] lg:gap-3">
                     <p className="text-[10px] leading-[10px] lg:text-[14px] lg:leading-5 text-headingColor font-[600]">
@@ -218,7 +214,6 @@ const Home = () => {
                   <span className="w-5 h-5 lg:w-[34px] lg:h-[34px] flex items-center justify-center bg-yellowColor rounded py-1 px-[6px] lg:py-3 lg:px-[9px]">
                     <img src={videoIcon} alt="videoIcon" />
                   </span>
-
                 </div>
 
                 <div className="w-[65px] lg:w-[96px] bg-[#CCF0F3] py-1 px-2 lg:py-[6-x] lg:px-[10px] text-[8px] leading-[8px] lg:text-[12px] lg:leading-4 text-irisBlueColor font-[500] mt-2 lg:mt-4 rounded-full">
@@ -231,7 +226,6 @@ const Home = () => {
                     Dr.Nihal
                   </h4>
                 </div>
-
               </div>
             </div>
           </div>
@@ -258,18 +252,20 @@ const Home = () => {
       <section>
         <div className="conatiner">
           <div className="flex justify-between gap-[50px] lg:gap-0 container">
-            <div className="w-1/2 hidden md:block" >
-              <img src={faqimg} alt="faq-img"/>
+            <div className="w-1/2 hidden md:block">
+              <img src={faqimg} alt="faq-img" />
             </div>
             <div className="w-full md:w-1/2">
-              <h2 className="heading">Most questions asked by our beloved users.</h2>
+              <h2 className="heading">
+                Most questions asked by our beloved users.
+              </h2>
               <FaqList />
             </div>
           </div>
         </div>
       </section>
       {/*   FAQ_SECTION END   */}
-      
+
       {/*   TESTIMONIAL START   */}
       <section>
         <div className="container">

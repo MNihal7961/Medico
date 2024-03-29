@@ -6,6 +6,7 @@ import dotenv from 'dotenv'
 import authRouter from './Routes/auth.js'
 import userRouter from './Routes/user.js'
 import doctorRouter from './Routes/doctor.js'
+import reviewRouter from './Routes/review.js'
 
 dotenv.config()
 
@@ -30,7 +31,8 @@ const connectDB = async () => {
         })
         console.log('mongoDB connected')
     } catch (error) {
-        console.log('Error while connectin DB', error.message)
+        console.log('Error while connectin DB')
+        console.error(error.message)
     }
 }
 
@@ -38,9 +40,11 @@ const connectDB = async () => {
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors(corsOptions))
+
 app.use("/auth",authRouter)
 app.use("/user",userRouter)
 app.use("/doctor",doctorRouter)
+app.use("/review",reviewRouter)
 
 
 app.listen(port, 'localhost', () => {
