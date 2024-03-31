@@ -68,32 +68,34 @@ export const getAllUsers = async (req, res) => {
 };
 
 export const getUserProfile = async (req, res) => {
+    console.log('Fetching user profile...');
     const userId = req.userId;
+    console.log('User ID:', userId);
 
     try {
-        const user = await User.findById(userId);
+        const user = await User.findById(userId); 
+        console.log('User profile data:', user);
 
         if (!user) {
-            return res
-                .status(404)
-                .json({ success: false, message: "User not found" });
+            console.log('User not found');
+            return res.status(404).json({ success: false, message: "User not found" });
         }
 
-        const [password, ...rest] = user._doc;
+        const {password, ...rest} = user._doc;
 
-        res
-            .status(200)
-            .json({
-                success: true,
-                message: "User details getting",
-                data: { ...rest },
-            });
+        console.log('User details:', rest);
+
+        res.status(200).json({
+            success: true,
+            message: "User details retrieved successfully",
+            data: { ...rest },
+        });
     } catch (err) {
-        res
-            .status(500)
-            .json({ success: false, message: "Something went wrong, cannot get" });
+        console.error('Error fetching user profile:', err);
+        res.status(500).json({ success: false, message: "Something went wrong, cannot get" });
     }
 };
+
 
 export const getMyAppointments = async (req, res) => {
     try {

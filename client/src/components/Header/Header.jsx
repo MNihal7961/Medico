@@ -80,9 +80,7 @@ const Header = () => {
               <div>
                 <Link
                   to={`${
-                    role === "doctor"
-                      ? "/doctor/profile/me"
-                      : "/user/profile/me "
+                    role === "doctor" ? "/doctor/profile" : "/user/profile"
                   }`}
                 >
                   <figure className="w-[35px] h-[35px] rounded-full cursor-pointer">
@@ -94,7 +92,6 @@ const Header = () => {
                   </figure>
                   <h2>{user?.name}</h2>
                 </Link>
-                
               </div>
             ) : (
               <Link to={"/login"}>

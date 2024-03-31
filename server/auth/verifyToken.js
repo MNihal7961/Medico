@@ -20,7 +20,7 @@ export const authenticate = async (req, res, next) => {
 
         req.userId = decoded.id
         req.role = decoded.role
-        
+        console.log('authenticated');
         next()
 
     } catch (err) {
@@ -33,24 +33,32 @@ export const authenticate = async (req, res, next) => {
 }
 
 export const restrict = roles => async (req, res, next) => {
+    try {
+        const userId = req.userId;
 
-    const userId = req.userId
+        let user;
+        let userRole;
 
-    let user
-    const patient = await User.findById(userId)
-    const doctor = await Doctor.findById(userId)
+        const patient = await User.findById(userId);
+        const doctor = await Doctor.findById(userId);
 
-    if (patient) {
-        user = patient
+        if (patient) {
+            user = patient;
+            userRole = "patient";
+        } else if (doctor) {
+            user = doctor;
+            userRole = "doctor";
+        } else {
+            return res.status(404).json({ success: false, message: "User not found" });
+        }
+
+        if (!roles.includes(userRole)) {
+            return res.status(401).json({ success: false, message: "You are not authorized" });
+        }
+        console.log('going to get profile');
+        next();
+    } catch (error) {
+        console.error("Error in restrict middleware:", error);
+        return res.status(500).json({ success: false, message: "Internal server error" });
     }
-
-    if (doctor) {
-        user = doctor
-    }
-
-    if (!roles.includes(user.role)) {
-        return res.status(401).json({success:false,message:"You are not authorized"})
-    }
-
-    next()
-}
+};
