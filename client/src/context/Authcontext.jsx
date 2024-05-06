@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useReducer } from "react";
 
 const initialState = {
   user:
-    localStorage.getItem("user") !== undefined
+    localStorage.getItem("user") != undefined
       ? JSON.parse(localStorage.getItem("user"))
       : null,
   role: localStorage.getItem("role") || null,
@@ -52,7 +52,7 @@ export const AuthContextProvider = ({ children }) => {
     <authContext.Provider
       value={{
         user: state.user,
-         token: state.token,
+        token: state.token,
         role: state.role,
         dispatch,
       }}

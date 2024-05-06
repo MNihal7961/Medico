@@ -7,6 +7,7 @@ export const updateDoctor = async (req, res) => {
 
     try {
 
+        console.log(req.body.ticketPrice,"????????")
         const updatedDoctor = await Doctor.findByIdAndUpdate(id, { $set: req.body }, { new: true })
 
         res
@@ -93,11 +94,14 @@ export const getAllDoctors = async (req, res) => {
 
 export const getDoctorProfile = async (req, res) => {
 
-    const doctorId = req.doctorId
+    const doctorId = req.userId
+    console.log(doctorId,"dfghvbjkle")
 
     try {
 
         const doctor = await Doctor.findById(doctorId)
+
+        console.log(doctor,"xsdfghvjbk")
 
         if (!doctor) {
             res.status(404).json({ success: false, message: "Doctor not found" })
@@ -106,9 +110,32 @@ export const getDoctorProfile = async (req, res) => {
         const [password, ...rest] = doctor._doc
         const appointments = await Booking.find({ doctor: doctorId })
 
+        if(!appointments){
+            appointments=[]
+        }
+
+        console.log(appointments,"redfhgj")
+
         res.status(200).json({ success: true, message: "Doctor profile getting", data: { ...rest, appointments } })
 
     } catch (err) {
         res.status(500).json({ success: false, message: "Something went wrong try again" })
+    }
+}
+
+export const fetchData=async(req,res)=>{
+    const id=req.userId
+    try{
+        const doc=await Doctor.findById(id)
+
+        console.log(doc)
+
+        if(!doc){
+            res.status(404).json({success:false,message:"not found"})
+        }
+
+        res.status(200).json({success:true,message:"success",data:doc})
+    }catch(err){
+        console.log(err)
     }
 }

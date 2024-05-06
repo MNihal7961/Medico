@@ -69,6 +69,8 @@ export const login = async (req, res) => {
     try {
         let user = null
 
+        console.log(req.body)
+
         const patient = await User.findOne({ email })
         const doctor = await Doctor.findOne({ email })
 
@@ -77,6 +79,8 @@ export const login = async (req, res) => {
         } else if (doctor) {
             user = doctor
         }
+
+        console.log(user)
 
         // CHECK USER EXISTS
         if (!user) {

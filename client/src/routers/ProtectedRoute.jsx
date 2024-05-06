@@ -9,9 +9,9 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
 
   const accessibleRoute =
     token && isAllowed ? children : <Navigate to={"/login"} replace={true} />;
-  
-     
+
   return accessibleRoute 
 };
 
 export default ProtectedRoute;
+  

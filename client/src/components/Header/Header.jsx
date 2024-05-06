@@ -11,7 +11,7 @@ const navLinks = [
     display: "Home",
   },
   {
-    path: "/doctors",
+    path: "/doctor",
     display: "Find a Doctor",
   },
   {
@@ -85,12 +85,11 @@ const Header = () => {
                 >
                   <figure className="w-[35px] h-[35px] rounded-full cursor-pointer">
                     <img
-                      src={user?.photo}
+                      src={user?.photo ? user?.photo : userImg}
                       alt="user-profile"
                       className="w-full rounded-full"
                     />
                   </figure>
-                  <h2>{user?.name}</h2>
                 </Link>
               </div>
             ) : (

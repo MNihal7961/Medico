@@ -12,11 +12,13 @@ export const getAllReviews = async (req, res) => {
 
 export const createReview = async (req, res) => {
 
-    if (!req.body.doctor) req.body.doctor = req.params.doctorId
+    if (!req.body.doctor) req.body.docto = req.params.doctorId
     if (!req.body.user) req.body.user = req.userId
 
     const nameReview = new Review(req.body)
 
+    console.log(nameReview,"/////")
+    console.log(req.params.doctorId,";;;;;")
     try {
 
         const savedReview = await nameReview.save()
@@ -28,6 +30,7 @@ export const createReview = async (req, res) => {
         res.status(200).json({ success: true, message: "Review Submited", data: savedReview })
 
     } catch (err) {
+        console.log(err)
         res.status(500).json({ success: false, message: err.message })
     }
 }

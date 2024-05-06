@@ -34,7 +34,7 @@ const Roters = () => {
         element={
           <ProtectedRoute allowedRoles={['doctor']}>
             <Dashboard />
-          </ProtectedRoute> 
+          </ProtectedRoute>  
         }
       />
     </Routes>

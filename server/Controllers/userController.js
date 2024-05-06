@@ -67,34 +67,28 @@ export const getAllUsers = async (req, res) => {
     }
 };
 
-export const getUserProfile = async (req, res) => {
-    console.log('Fetching user profile...');
-    const userId = req.userId;
-    console.log('User ID:', userId);
+export const getUserProfile=async (req,res)=>{
+    const userId=req.userId
 
+    console.log(userId,"reqqq idd")
     try {
-        const user = await User.findById(userId); 
-        console.log('User profile data:', user);
+        const user=await User.findById(userId)
 
-        if (!user) {
-            console.log('User not found');
-            return res.status(404).json({ success: false, message: "User not found" });
+        console.log(
+            "zsdfghjkn"
+        )
+
+        if(!user){
+            return res.status(404).json({success:false,message:"User Not Found!"})
         }
 
-        const {password, ...rest} = user._doc;
-
-        console.log('User details:', rest);
-
-        res.status(200).json({
-            success: true,
-            message: "User details retrieved successfully",
-            data: { ...rest },
-        });
+        const {password,...rest}=user._doc
+ 
+        res.status(200).json({success:true,message:"User info is getting...",data:{...rest}})
     } catch (err) {
-        console.error('Error fetching user profile:', err);
-        res.status(500).json({ success: false, message: "Something went wrong, cannot get" });
+        res.status(500).json({success:false,message:"something went wrong , try later !"})
     }
-};
+}
 
 
 export const getMyAppointments = async (req, res) => {

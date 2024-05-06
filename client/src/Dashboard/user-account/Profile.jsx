@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import HashLoader from "react-spinners/HashLoader";
 import uploadImageToCloudinary from "../../utils/uploadCloudinary";
 import { toast } from "react-toastify";
-import { token } from "../../config";
+import { BASE_URL, token } from "../../config";
 
-const Profile = ({user}) => {
+const Profile = ({ user }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewURL, setPreviewURL] = useState("");
   const [loading, setLoading] = useState(false);
@@ -20,14 +20,14 @@ const Profile = ({user}) => {
 
   const navigate = useNavigate();
 
-  useEffect(()=>{
+  useEffect(() => {
     setFormData({
-      name:user.name,
-      email:user.email,
-      photo:user.photo,
-      bloodType:user.bloodType
-    })
-  },[user])
+      name: user?.name,
+      email: user?.email,
+      photo: user?.photo,
+      bloodType: user?.bloodType,
+    });
+  }, [user]);
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -51,7 +51,7 @@ const Profile = ({user}) => {
         method: "put",
         headers: {
           "Content-Type": "application/json",
-          Authorization:`Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(formData),
       });
@@ -65,7 +65,7 @@ const Profile = ({user}) => {
       setLoading(false);
 
       toast.success(message);
-
+ 
       navigate("/user/profile");
     } catch (err) {
       toast.error(err.message);
@@ -118,22 +118,6 @@ const Profile = ({user}) => {
             className="w-full pr-4 py-3 border-b border-solid border-[#0066ff61] focus:outline-none focus:border-b-primaryColor text-[16px] leading-7 text-headingColor placeholder:text-textColor cursor-pointer required:"
           />
         </div>
-        <div className="flex items-center justify-between mb-5">
-          <label className="text-headingColor font-bold txet-[16px] leading-7">
-            Gender :
-            <select
-              value={formData.gender}
-              onChange={handleInputChange}
-              name="gender"
-              className="text-textColor font-semibold text-[15px] leading-7 px-4 py-3 focus:outline-none"
-            >
-              <option value="">Choose</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-            </select>
-          </label>
-        </div>
         <div className="mb-5 flex items-center gap-3">
           {formData.photo && (
             <figure className="w-[60px] h-[60px] rounded-full border-2 border-solid border-primaryColor flex items-center justify-center">
@@ -157,9 +141,7 @@ const Profile = ({user}) => {
               htmlFor="customFile"
               className="absolute top-0 left-0 w-full h-full flex items-center px-[0.75rem] py-[0.375rem] text-[15px] leading-6 overflow-hidden bg-[#0066ff46] text-headingColor font-semibold rounded-lg truncate cursor-pointer"
             >
-              {
-                selectedFile ? selectedFile.name : 'Upload Photo'
-              }
+              {selectedFile ? selectedFile.name : "Upload Photo"}
             </label>
           </div>
         </div>
