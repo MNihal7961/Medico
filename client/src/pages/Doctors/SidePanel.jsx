@@ -1,7 +1,34 @@
 import React from "react";
 import convertTime from "../../utils/convertTime";
+import { token } from "../../config";
+import { toast } from "react-toastify";
 
-const SidePanel = ({ ticketPrice, timeSlots }) => {
+const SidePanel = ({ doctorId, ticketPrice, timeSlots }) => {
+  const bookingHandler = async () => {
+    try {
+      const res = await fetch(
+        `http://localhost:3000/booking/checkout-session/${doctorId}`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message + "Please try again");
+      }
+
+      if (data.session) {
+        window.location.href = data.session.url;
+      }
+    } catch (err) {
+      toast.error(err.message);
+    }
+  };
   return (
     <div className="shadow-panelShadow p-3 lg:p-5 rounded-md">
       <div className="flex items-center justify-between">
@@ -23,14 +50,13 @@ const SidePanel = ({ ticketPrice, timeSlots }) => {
                 {item.day.charAt(0).toUpperCase() + item.day.slice(1)}
               </p>
               <p className="text-[15px] leading-6 text-textColor font-semibold">
-                {convertTime(item.startingTime)} -
-                {convertTime(item.endingTime)}
+                {convertTime(item.startingTime)} -{convertTime(item.endingTime)}
               </p>
             </li>
           ))}
         </ul>
       </div>
-      <button className="btn px-2 w-full rounded-md">Book Appointment</button>
+      <button onClick={bookingHandler} className="btn px-2 w-full rounded-md">Book Appointment</button>
     </div>
   );
 };

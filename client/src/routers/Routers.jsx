@@ -9,6 +9,7 @@ import { Routes, Route } from "react-router-dom";
 import MyAccount from "../Dashboard/user-account/MyAccount";
 import Dashboard from "../Dashboard/doctor-account/Dashboard";
 import ProtectedRoute from "./ProtectedRoute";
+import checkoutSuccess from "../pages/checkoutSuccess";
 
 const Roters = () => {
   return (
@@ -21,6 +22,7 @@ const Roters = () => {
       <Route path="/register" element={<Signup />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/services" element={<Services />} />
+      <Route path="/checkout-success" element={<checkoutSuccess />} />
       <Route
         path="/user/profile"
         element={
@@ -30,11 +32,11 @@ const Roters = () => {
         }
       />
       <Route
-        path="/doctor/profile"
+        path="/doctor/profile" 
         element={
-          <ProtectedRoute allowedRoles={['doctor']}>
+          <ProtectedRoute allowedRoles={["doctor"]}>
             <Dashboard />
-          </ProtectedRoute>  
+          </ProtectedRoute>
         }
       />
     </Routes>
