@@ -6,7 +6,7 @@ import avatar from '../../assets/images/doctor-img01.png'
 
 
 const DoctorCard = ({ doctor }) => {
-    const { name, specialization, avgRating, totalRating, photo, totalPatients, experiences } = doctor
+    const { name, specialization, averageRating, totalRating, photo, totalPatients, experiences } = doctor
     return (
         <div className='p-3 lg:p-5'>
             <div>
@@ -21,7 +21,7 @@ const DoctorCard = ({ doctor }) => {
                 </span>
                 <div className="flex items-center gap-[6px]">
                     <span className='flex items-center gap-[6px] text-[14px] leading-6 lg:text-[16px] lg:leading-7 font-semibold text-headingColor'>
-                        <img src={starIcon} alt="starIcon" /> {avgRating? avgRating : "NA"}
+                        <img src={starIcon} alt="starIcon" /> {averageRating? averageRating : "NA"}
                     </span>
                     <span className='text-[14px] leading-6 lg:text-[16px] lg:leading-7 font-semibold text-textColor'>
                         ({totalRating})

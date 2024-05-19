@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { token } from "../../config";
 
 const Profile = ({ doctorData }) => {
+  console.log(doctorData,"//////////")
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewURL, setPreviewURL] = useState("");
   const [formData, setFormData] = useState({

@@ -6,8 +6,18 @@ import uploadImageToCloudinary from "../utils/uploadCloudinary";
 import { BASE_URL } from "../config";
 import { toast } from "react-toastify";
 import HashLoader from "react-spinners/HashLoader";
+import Lottie from "react-lottie";
+import gif from "../assets/lottie/doc.json";
 
 const Signup = () => {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: gif,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewURL, setPreviewURL] = useState("");
   const [loading, setLoading] = useState(false);
@@ -25,10 +35,10 @@ const Signup = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const  handleFileInputChange = async (event) => {
+  const handleFileInputChange = async (event) => {
     const file = event.target.files[0];
     const data = await uploadImageToCloudinary(file);
-    console.log(data)
+    console.log(data);
     setPreviewURL(data.url);
     setSelectedFile(data.url);
     setFormData({ ...formData, photo: data.url });
@@ -68,13 +78,9 @@ const Signup = () => {
       <div className="max-w-[1170px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* ====== IMG-BOX START ====== */}
-          <div className="hidden lg:block bg-[#0166FF] rounded-l-lg">
-            <figure className="rounded-l-lg">
-              <img
-                src={signUpImg}
-                alt="box-img"
-                className="rounded-l-lg w-full "
-              />
+          <div className="hidden lg:block rounded-l-lg">
+            <figure className="rounded-l-lg w-full">
+              <Lottie options={defaultOptions} height={400} width={400}/>
             </figure>
           </div>
           {/* ====== IMG-BOX END ====== */}
@@ -144,15 +150,15 @@ const Signup = () => {
                 </label>
               </div>
               <div className="mb-5 flex items-center gap-3">
-                {
-                  selectedFile && <figure className="w-[60px] h-[60px] rounded-full border-2 border-solid border-primaryColor flex items-center justify-center">
-                  <img
-                    src={previewURL}
-                    alt="avatar"
-                    className="w-full rounded-full"
-                  />
-                </figure>
-                }
+                {selectedFile && (
+                  <figure className="w-[60px] h-[60px] rounded-full border-2 border-solid border-primaryColor flex items-center justify-center">
+                    <img
+                      src={previewURL}
+                      alt="avatar"
+                      className="w-full rounded-full"
+                    />
+                  </figure>
+                )}
                 <div className="relative w-[130px] h-[50px]">
                   <input
                     type="file"

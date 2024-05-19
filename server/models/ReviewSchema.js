@@ -27,18 +27,14 @@ const reviewSchema = new mongoose.Schema(
 );
 
 reviewSchema.pre(/^find/, function (next) {
-
   this.populate({
     path: "user",
     select: "name photo",
-  })
+  });
+  next();
+});
 
-  next()
-
-})
-
-reviewSchema.static.calcAverageRatings = async function (doctorId) {
-
+reviewSchema.statics.calcAverageRatings = async function (doctorId) {
   const stats = await this.aggregate([
     {
       $match: { doctor: doctorId }
@@ -50,16 +46,18 @@ reviewSchema.static.calcAverageRatings = async function (doctorId) {
         avgRating: { $avg: '$rating' }
       }
     }
-  ])
+  ]);
 
   await Doctor.findByIdAndUpdate(doctorId,{
-    totalRating:stats[0].numOfRating,
-    averageRating:stats[0].avgRating,
-  })
-}
+    totalRating: stats[0].numOfRating,
+    averageRating: stats[0].avgRating,
+  });
+};
 
 reviewSchema.post('save', function () {
-  this.constructor.calcAverageRatings(this.doctor)
-})
+  this.constructor.calcAverageRatings(this.doctor);
+});
 
-export default mongoose.model("Review", reviewSchema);
+const Review = mongoose.model("Review", reviewSchema);
+
+export default Review;

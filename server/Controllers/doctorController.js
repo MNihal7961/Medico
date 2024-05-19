@@ -7,7 +7,7 @@ export const updateDoctor = async (req, res) => {
 
     try {
 
-        console.log(req.body.ticketPrice,"????????")
+        console.log(req.body,"????????")
         const updatedDoctor = await Doctor.findByIdAndUpdate(id, { $set: req.body }, { new: true })
 
         res

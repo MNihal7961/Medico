@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import logo from "../../assets/images/medico.jpeg"
+import logo from '../../assets/images/med.png'
 import { RiLinkedinFill } from 'react-icons/ri';
 import { AiFillYoutube, AiFillGithub, AiOutlineInstagram } from 'react-icons/ai';
 
@@ -82,7 +82,7 @@ const Footer = () => {
           <p className='text-[16px] leading-7 font-[400] text-textColor mt-4 '>Copyright {year} devoleped by nihal.m all rights recieved </p>
           <div className='flex items-center gap-3 mt-4'>
             {socialLinks.map((link,index)=>(
-              <Link to={link.path} key={index} className='w-9 h-9 border border-solid border-[#181A1E] rounded-full flex items-center justify-center group hover:bg-red-600 hover:border-none'>
+              <Link to={link.path} key={index} className='w-9 h-9 border border-solid border-[#181A1E] rounded-full flex items-center justify-center group hover:bg-primaryColor transition hover:border-none'>
                 {link.icon}
               </Link> 
             ))}

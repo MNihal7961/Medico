@@ -20,8 +20,7 @@ const MyAccount = () => {
   } = useGetProfile("http://localhost:3000/user/profile/me");
   console.log(userData, "USER  aXSCDVF");
 
-  // const userData=JSON.parse(localStorage.getItem('user'))
-  // console.log(userData.name , 'nmse')
+
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });

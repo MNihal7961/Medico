@@ -58,7 +58,7 @@ const Doctors = () => {
             {!loading &&
               !error &&
               doctors.map((doctor) => (
-                <DoctorCard key={doctor.id} doctor={doctor} />
+                <DoctorCard key={doctor._id} doctor={doctor} />
               ))}
           </div>
         </div>

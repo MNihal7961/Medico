@@ -1,9 +1,9 @@
 import { useEffect, useRef, useContext } from "react";
-import logo from "../../assets/images/medico.jpeg";
 import { NavLink, Link } from "react-router-dom";
 import userImg from "../../assets/images/avatar-icon.png";
 import { BiMenu } from "react-icons/bi";
 import { authContext } from "../../context/Authcontext";
+import logo from '../../assets/images/med.png'
 
 const navLinks = [
   {
@@ -52,8 +52,8 @@ const Header = () => {
       <div className="container">
         <div className="flex items-center justify-between">
           {/*    LOGO     */}
-          <div>
-            <img src={logo} alt="logo" className="w-full " />
+          <div className="p-3">
+            <img src={logo} alt="logo" className="w-full" />
           </div>
           {/*    MENU     */}
           <div className="navigation" ref={menuRef} onClick={toggleMenu}>
